@@ -2,37 +2,42 @@ import categories from './categories.js'
 import setCategoryIcon from './setCategoryIcon.js'
 
 const renderCategoryTable = tasks => {
-    const tbody = document.querySelector('.category-table tbody')
-    tbody.innerHTML = ''
-    
-    const tasksCategories = []
+    try {
+        const tbody = document.querySelector('.category-table tbody')
+        tbody.innerHTML = ''
 
-    Object.values(categories).forEach(category => {
-        const categoryTasks = tasks.filter(task => task.category === category)
-        const archivedTasks = categoryTasks.filter(task => task.archived)
+        const tasksCategories = []
 
-        const taskCategory = {
-            category,
-            active: categoryTasks.length - archivedTasks.length,
-            archived: archivedTasks.length,
-        }
+        Object.values(categories).forEach(category => {
+            const categoryTasks = tasks.filter(task => task.category === category)
+            const archivedTasks = categoryTasks.filter(task => task.archived)
 
-        tasksCategories.push(taskCategory)
-    })
+            const taskCategory = {
+                category,
+                active: categoryTasks.length - archivedTasks.length,
+                archived: archivedTasks.length,
+            }
 
-    tasksCategories.forEach(taskCategory => {
-        const tr = document.createElement('tr')
+            tasksCategories.push(taskCategory)
+        })
 
-        const categoryTd = document.createElement('td')
-        categoryTd.appendChild(setCategoryIcon(taskCategory.category))
-        tr.appendChild(categoryTd)
+        tasksCategories.forEach(taskCategory => {
+            const tr = document.createElement('tr')
 
-        tr.addTextTd(taskCategory.category)
-        tr.addTextTd(taskCategory.active)
-        tr.addTextTd(taskCategory.archived)
+            const categoryTd = document.createElement('td')
+            categoryTd.appendChild(setCategoryIcon(taskCategory.category))
+            tr.appendChild(categoryTd)
 
-        tbody.appendChild(tr)
-    })
+            tr.addTextTd(taskCategory.category)
+            tr.addTextTd(taskCategory.active)
+            tr.addTextTd(taskCategory.archived)
+
+            tbody.appendChild(tr)
+        })
+    } catch (error) {
+        console.error(error)
+    }
+
 }
 
 export default renderCategoryTable

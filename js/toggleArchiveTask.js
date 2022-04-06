@@ -3,15 +3,19 @@ import findTaskByBtn from './findTaskByBtn.js'
 import renderAllTasks from './renderAllTasks.js'
 
 const toggleArchiveTask = event => {
-    const task = findTaskByBtn(event.target)
-    const taskIndex = tasks.findIndex(elem => elem.id === task.id)
+    try {
+        const task = findTaskByBtn(event.target)
+        const taskIndex = tasks.findIndex(elem => elem.id === task.id)
 
-    tasks[taskIndex] = {
-        ...tasks[taskIndex],
-        archived: !tasks[taskIndex].archived
+        tasks[taskIndex] = {
+            ...tasks[taskIndex],
+            archived: !tasks[taskIndex].archived
+        }
+
+        renderAllTasks(tasks)
+    } catch (error) {
+        console.error(error)
     }
-
-    renderAllTasks(tasks)
 }
 
 export default toggleArchiveTask
