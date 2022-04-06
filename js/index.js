@@ -1,15 +1,13 @@
 import tasks from './tasks.js'
 import renderActiveTasks from './renderActiveTasks.js'
 import renderArchivedTasks from './renderArchivedTasks.js'
-import './addTaskForm.js'
-import './modal.js'
+import renderCategoryOptions from './renderCategoryOptions.js'
+import taskFormSubmit from './taskFormSubmit.js'
 
-HTMLTableRowElement.prototype.addTextTd = function(text) {
-    const td = document.createElement('td')
-    td.innerText = text
-    this.appendChild(td)
-    return this
-}
+const form = document.querySelector('.add-task-form')
+form.addEventListener('submit', taskFormSubmit)
+
+renderCategoryOptions()
 
 renderActiveTasks(tasks)
 renderArchivedTasks(tasks)
