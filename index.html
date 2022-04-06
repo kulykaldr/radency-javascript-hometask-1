@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Task manager</title>
+</head>
+
+<body class="page-body">
+    <div class="container">
+        <h2>Tasks table</h2>
+        <table class="tasks-table">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>Name</th>
+                    <th>Created</th>
+                    <th>Category</th>
+                    <th>Content</th>
+                    <th>Dates</th>
+                    <th>
+                        <div class="icon-action icon-archive-white"></div>
+                        <div class="icon-action icon-trash-white"></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    
+        <div class="btn-create-task">
+            <button type="button" class="btn btn-create-task">Create Task</button>
+        </div>
+        
+        <h2>Archive table</h2>
+        <table class="tasks-table archive-table container">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>Name</th>
+                    <th>Created</th>
+                    <th>Category</th>
+                    <th>Content</th>
+                    <th>Dates</th>
+                    <th>
+                        <div class="icon-action icon-archive-white"></div>
+                        <div class="icon-action icon-trash-white"></div>
+                    </th>
+                </tr>
+            </thead>
+            
+            <tbody></tbody>
+            
+        </table>
+        
+        <h2>Category table</h2>
+        <table class="category-table">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th>Tasks Category</th>
+                    <th>Active</th>
+                    <th>Archived</th>
+                </tr>
+            </thead>
+            
+            <tbody></tbody>
+            
+        </table>
+    </div>
+    
+
+    <div class="modal closed">
+        <h3>Create task</h3>
+        <button class="close-button" id="close-button">Close</button>
+        <form class="add-task-form">
+            <input type="text" id="id" name="id" hidden>
+
+            <div>
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name" placeholder="Input task name">
+            </div>
+
+            <div>
+                <label for="category">Category</label><br>
+                <select id="category" name="category"></select>
+            </div>
+
+            <div>
+                <label for="content">Content</label><br>
+                <input type="text" id="content" name="content" placeholder="Input your content with date">
+            </div>
+
+            <input type="submit" class="btn" value="Add">
+        </form>
+    </div>
+    <div class="modal-overlay closed"></div>
+    
+    <script type="module" src="js/index.js"></script>
+</body>
+</html>
