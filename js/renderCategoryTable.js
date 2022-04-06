@@ -1,7 +1,10 @@
 import categories from './categories.js'
 import setCategoryIcon from './setCategoryIcon.js'
 
-const getTasksCategories = tasks => {
+const renderCategoryTable = tasks => {
+    const tbody = document.querySelector('.category-table tbody')
+    tbody.innerHTML = ''
+    
     const tasksCategories = []
 
     Object.values(categories).forEach(category => {
@@ -16,15 +19,6 @@ const getTasksCategories = tasks => {
 
         tasksCategories.push(taskCategory)
     })
-
-    return tasksCategories
-}
-
-const renderCategoryTable = tasks => {
-    const tbody = document.querySelector('.category-table tbody')
-    tbody.innerHTML = ''
-    
-    const tasksCategories = getTasksCategories(tasks)
 
     tasksCategories.forEach(taskCategory => {
         const tr = document.createElement('tr')

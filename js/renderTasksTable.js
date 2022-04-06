@@ -1,7 +1,14 @@
-import editTaskForm from './addTaskForm.js'
+import editTaskForm from './editTaskForm.js'
 import setCategoryIcon from './setCategoryIcon.js'
 import toggleArchiveTask from './toggleArchiveTask.js'
 import deleteTask from './deleteTask.js'
+
+HTMLTableRowElement.prototype.addTextTd = function(text) {
+    const td = document.createElement('td')
+    td.innerText = text
+    this.appendChild(td)
+    return this
+}
 
 const renderTasksTable = (tbody, tasks) => {
     tasks.forEach(task => {
